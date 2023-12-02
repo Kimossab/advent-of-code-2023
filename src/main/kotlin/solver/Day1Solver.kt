@@ -27,6 +27,41 @@ class Day1Solver : BaseSolver(), ISolver {
             "eight" to 8,
             "nine" to 9
         )
+        val numbersPart2Regex = numbersPart1 + numbersPart2
+        val part1RegexSingle = """\d""".toRegex()
+        val part1Regex = """(?<first>\d).*(?<last>\d)""".toRegex()
+        val part2Regex =
+            """(?<first>one|two|three|four|five|six|seven|eight|nine|\d).*(?<last>one|two|three|four|five|six|seven|eight|nine|\d)""".toRegex()
+        val part2RegexSingle =
+            """(one|two|three|four|five|six|seven|eight|nine|\d)""".toRegex()
+    }
+
+    fun getValueRegex(line: String): Pair<Int, Int> {
+        var p1V = 0
+        val p1 = part1Regex.find(line)?.groups
+        if (p1 == null) {
+            val v = part1RegexSingle.find(line)?.value?.toIntOrNull() ?: 0
+            p1V = v * 10 + v
+        } else {
+            val p1L = p1["last"]?.value?.toIntOrNull() ?: 0
+            val p1F = p1["first"]?.value?.toIntOrNull() ?: p1L
+
+            p1V = p1F * 10 + p1L
+        }
+
+        var p2V = 0
+        val p2 = part2Regex.find(line)?.groups
+        if (p2 == null) {
+            val v = part2RegexSingle.find(line)?.value?.toIntOrNull() ?: 0
+            p2V = v * 10 + v
+        } else {
+            val p2L = numbersPart2Regex[p2["last"]?.value] ?: 0
+            val p2F = numbersPart2Regex[p2["first"]?.value] ?: p2L
+
+            p2V = p2F * 10 + p2L
+        }
+
+        return Pair(p1V, p2V)
     }
 
     fun getValue(line: String): Pair<Int, Int> {
@@ -104,7 +139,7 @@ class Day1Solver : BaseSolver(), ISolver {
             if (line.isBlank()) {
                 continue
             }
-            val value = getValue(line);
+            val value = getValueRegex(line);
 
             sum1 += value.first
             sum2 += value.second
