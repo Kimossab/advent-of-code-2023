@@ -16,8 +16,9 @@ class Day3Solver : BaseSolver(), ISolver {
         val lines = getLines(cookie)
 
         val numbers = mutableListOf<NumberPos>()
-        val characters = mutableListOf<Pos>()
-        val gears = mutableListOf<Pos>()
+
+        var part1 = 0
+        var part2 = 0
 
         for (i in 0..lines.lastIndex) {
             if (lines[i].isBlank()) {
@@ -25,52 +26,36 @@ class Day3Solver : BaseSolver(), ISolver {
             }
 
             val n = """(\d+)""".toRegex().findAll(lines[i])
-            val allGears = """\*""".toRegex().findAll(lines[i])
-            val chars = """[^.*\d\s]""".toRegex().findAll(lines[i])
 
             for (num in n) {
                 numbers.add(NumberPos(num.value.toInt(), num.range.last - num.range.first, Pos(num.range.first, i)))
             }
-            for (g in allGears) {
-                val p = Pos(g.range.first, i)
-                gears.add(p)
-                characters.add(p)
+        }
+
+        for (i in 0..lines.lastIndex) {
+            if (lines[i].isBlank()) {
+                continue
             }
+
+            val chars = """[^.\d\s]""".toRegex().findAll(lines[i])
+
             for (c in chars) {
-                characters.add(Pos(c.range.first, i))
-            }
-        }
+                var intCount = 0
+                var multiplication = 1
 
-        var part1 = 0
-        var part2 = 0
-
-        for (n in numbers) {
-            var intersects = false
-
-            for (c in characters) {
-                if (n.intersects(c)) {
-                    intersects = true
-                    break
+                for (n in numbers) {
+                    if (n.intersects(Pos(c.range.first, i))) {
+                        part1 += n.number
+                        if (c.value == "*") {
+                            intCount++
+                            multiplication *= n.number
+                        }
+                    }
                 }
-            }
 
-            if (intersects) {
-                part1 += n.number
-            }
-        }
-
-        for (g in gears) {
-            var mul = 1
-            var num = 0
-            for (n in numbers) {
-                if (n.intersects(g)) {
-                    num++
-                    mul *= n.number
+                if (intCount == 2) {
+                    part2 += multiplication
                 }
-            }
-
-            if (num == 2) {
-                part2 += mul
             }
         }
 

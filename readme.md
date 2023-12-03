@@ -32,8 +32,9 @@ AoC. (Example: `./inputs/2023/1.txt`)
   <p>
 
 ```
-Day 1: Part 1: (56108) | Part 2 (55652) | Solved in 20 ms
-Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 2 ms
+Day 1: Part 1: (56108) | Part 2 (55652) | Solved in 2 ms
+Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 1 ms
+Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 27 ms
 ```
 
   </p>
