@@ -3,6 +3,7 @@ import com.natpryce.konfig.Key
 import com.natpryce.konfig.stringType
 import solver.Day1Solver
 import solver.Day2Solver
+import solver.Day3Solver
 import solver.ISolver
 import kotlin.system.measureTimeMillis
 
@@ -12,7 +13,8 @@ val config = ConfigurationProperties.fromResource("application.properties")
 fun main() {
     val solverMap = mapOf<Int, ISolver>(
         1 to Day1Solver(),
-        2 to Day2Solver()
+        2 to Day2Solver(),
+        3 to Day3Solver()
     )
 
     val daysAvailable = solverMap.keys.joinToString(", ")

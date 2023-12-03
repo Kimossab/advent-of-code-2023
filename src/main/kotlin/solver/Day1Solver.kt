@@ -5,7 +5,7 @@ import Day
 @Day(2023, 1)
 class Day1Solver : BaseSolver(), ISolver {
     companion object {
-        val numbersPart1 = mapOf<String, Int>(
+        val numbersPart1 = mapOf(
             "1" to 1,
             "2" to 2,
             "3" to 3,
@@ -16,7 +16,7 @@ class Day1Solver : BaseSolver(), ISolver {
             "8" to 8,
             "9" to 9
         )
-        val numbersPart2 = mapOf<String, Int>(
+        val numbersPart2 = mapOf(
             "one" to 1,
             "two" to 2,
             "three" to 3,
@@ -36,29 +36,27 @@ class Day1Solver : BaseSolver(), ISolver {
             """(one|two|three|four|five|six|seven|eight|nine|\d)""".toRegex()
     }
 
-    fun getValueRegex(line: String): Pair<Int, Int> {
-        var p1V = 0
+    private fun getValueRegex(line: String): Pair<Int, Int> {
         val p1 = part1Regex.find(line)?.groups
-        if (p1 == null) {
+        val p1V = if (p1 == null) {
             val v = part1RegexSingle.find(line)?.value?.toIntOrNull() ?: 0
-            p1V = v * 10 + v
+            v * 10 + v
         } else {
             val p1L = p1["last"]?.value?.toIntOrNull() ?: 0
             val p1F = p1["first"]?.value?.toIntOrNull() ?: p1L
 
-            p1V = p1F * 10 + p1L
+            p1F * 10 + p1L
         }
 
-        var p2V = 0
         val p2 = part2Regex.find(line)?.groups
-        if (p2 == null) {
+        val p2V = if (p2 == null) {
             val v = part2RegexSingle.find(line)?.value?.toIntOrNull() ?: 0
-            p2V = v * 10 + v
+            v * 10 + v
         } else {
             val p2L = numbersPart2Regex[p2["last"]?.value] ?: 0
             val p2F = numbersPart2Regex[p2["first"]?.value] ?: p2L
 
-            p2V = p2F * 10 + p2L
+            p2F * 10 + p2L
         }
 
         return Pair(p1V, p2V)
@@ -130,7 +128,7 @@ class Day1Solver : BaseSolver(), ISolver {
     }
 
     override fun solve(cookie: String?): Pair<String, String?> {
-        val lines = getLines(cookie);
+        val lines = getLines(cookie)
 
         var sum1 = 0
         var sum2 = 0
@@ -139,7 +137,7 @@ class Day1Solver : BaseSolver(), ISolver {
             if (line.isBlank()) {
                 continue
             }
-            val value = getValueRegex(line);
+            val value = getValueRegex(line)
 
             sum1 += value.first
             sum2 += value.second
