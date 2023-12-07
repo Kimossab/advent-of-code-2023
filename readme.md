@@ -33,10 +33,12 @@ AoC. (Example: `./inputs/2023/1.txt`)
 
 ```
 Day 1: Part 1: (56108) | Part 2 (55652) | Solved in 25 ms
-Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 5 ms
-Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 70 ms
+Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 7 ms
+Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 65 ms
 Day 4: Part 1: (26218) | Part 2 (9997537) | Solved in 10 ms
-Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 20 ms
+Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 21 ms
+Day 6: Part 1: (440000) | Part 2 (26187338) | Solved in 0 ms
+Day 7: Part 1: (251121738) | Part 2 (251421071) | Solved in 21 ms
 ```
 
   </p>
@@ -45,10 +47,11 @@ Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 20 ms
 <details>
   <summary>My personal stats</summary>
   <p>
-
 ```
-      --------Part 1--------   --------Part 2---------
+--------Part 1--------   --------Part 2---------
 Day       Time   Rank  Score       Time    Rank  Score
+  7   10:56:48  37950      0   12:40:26   34900      0
+  6   10:01:39  46013      0   10:11:14   44800      0
   5   08:59:52  37254      0   10:13:19   19863      0
   4   06:29:57  44674      0   07:21:32   36981      0
   3   09:47:32  44525      0   09:55:36   35569      0

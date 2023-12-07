@@ -7,6 +7,7 @@ import solver.Day3Solver
 import solver.Day4Solver
 import solver.Day5Solver
 import solver.Day6Solver
+import solver.Day7Solver
 import solver.ISolver
 import kotlin.system.measureTimeMillis
 
@@ -20,7 +21,8 @@ fun main() {
         3 to Day3Solver(),
         4 to Day4Solver(),
         5 to Day5Solver(),
-        6 to Day6Solver()
+        6 to Day6Solver(),
+        7 to Day7Solver()
     )
 
     val daysAvailable = solverMap.keys.joinToString(", ")

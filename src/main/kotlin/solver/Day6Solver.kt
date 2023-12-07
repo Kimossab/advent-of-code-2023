@@ -48,7 +48,7 @@ class Day6Solver : BaseSolver(), ISolver {
             x * (time - x) = d
             -x^2 + time * x = d
             -x^2 + time * x - d = 0
-            -x^2 + t * x - d = 0
+            -x^2 + time * x - d = 0
 
             val t = times[i].toDouble()
             val d = distances[i].toDouble()
