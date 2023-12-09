@@ -5,37 +5,19 @@ import Day
 
 @Day(2023, 9)
 class Day9Solver : BaseSolver(), ISolver {
-    class Sequence(private val seq: List<Int>) {
-        val subSequence: Sequence?
-
-        init {
-            subSequence = if (seq.all { it == 0 }) {
-                null
-            } else {
-                val list = mutableListOf<Int>()
-
-                for (i in 0..<seq.lastIndex) {
-                    list.add(seq[i + 1] - seq[i])
-                }
-
-                Sequence(list)
-            }
+    private fun getNextPrev(sequence: List<Int>): Pair<Int, Int> {
+        if (sequence.all { it == 0 }) {
+            return Pair(0, 0)
         }
 
-        fun getNext(): Int {
-            if (subSequence == null) {
-                return 0
-            }
-            return seq.last() + subSequence.getNext()
+        val list = mutableListOf<Int>()
+
+        for (i in 0..<sequence.lastIndex) {
+            list.add(sequence[i + 1] - sequence[i])
         }
 
-        fun getPrevious(): Int {
-            if (subSequence == null) {
-                return 0
-            }
-            val prev = seq.first() - subSequence.getPrevious()
-            return prev
-        }
+        val subSeqNextPrev = getNextPrev(list)
+        return Pair(sequence.first() - subSeqNextPrev.first, sequence.last() + subSeqNextPrev.second)
     }
 
     override fun solve(cookie: String?): Pair<String, String?> {
@@ -48,12 +30,12 @@ class Day9Solver : BaseSolver(), ISolver {
             if (line.isBlank()) {
                 continue
             }
-            val seq = Sequence(line.split(" ").map { it.toInt() })
-            part1 += seq.getNext()
-            part2 += seq.getPrevious()
+
+            val res = getNextPrev(line.split(" ").map { it.toInt() })
+            part1 += res.second
+            part2 += res.first
         }
-
-
+        
         return Pair(part1.toString(), part2.toString())
     }
 }
