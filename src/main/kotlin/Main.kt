@@ -1,6 +1,7 @@
 import com.natpryce.konfig.ConfigurationProperties
 import com.natpryce.konfig.Key
 import com.natpryce.konfig.stringType
+import solver.Day10Solver
 import solver.Day1Solver
 import solver.Day2Solver
 import solver.Day3Solver
@@ -26,7 +27,8 @@ fun main() {
         6 to Day6Solver(),
         7 to Day7Solver(),
         8 to Day8Solver(),
-        9 to Day9Solver()
+        9 to Day9Solver(),
+        10 to Day10Solver()
     )
 
     val daysAvailable = solverMap.keys.joinToString(", ")
