@@ -32,15 +32,16 @@ AoC. (Example: `./inputs/2023/1.txt`)
   <p>
 
 ```
-Day 1: Part 1: (56108) | Part 2 (55652) | Solved in 36 ms
-Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 35 ms
-Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 93 ms
-Day 4: Part 1: (26218) | Part 2 (9997537) | Solved in 38 ms
-Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 73 ms
+Day 1: Part 1: (56108) | Part 2 (55652) | Solved in 26 ms
+Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 7 ms
+Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 62 ms
+Day 4: Part 1: (26218) | Part 2 (9997537) | Solved in 10 ms
+Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 23 ms
 Day 6: Part 1: (440000) | Part 2 (26187338) | Solved in 1 ms
-Day 7: Part 1: (251121738) | Part 2 (251421071) | Solved in 66 ms
-Day 8: Part 1: (14257) | Part 2 (16187743689077) | Solved in 38 ms
-Day 9: Part 1: (1861775706) | Part 2 (1082) | Solved in 2 ms
+Day 7: Part 1: (251121738) | Part 2 (251421071) | Solved in 21 ms
+Day 8: Part 1: (14257) | Part 2 (16187743689077) | Solved in 30 ms
+Day 9: Part 1: (1861775706) | Part 2 (1082) | Solved in 7 ms
+Day 10: Part 1: (6903) | Part 2 (265) | Solved in 19 ms
 ```
 
   </p>
@@ -52,6 +53,7 @@ Day 9: Part 1: (1861775706) | Part 2 (1082) | Solved in 2 ms
 ```
       --------Part 1--------   --------Part 2---------
 Day       Time   Rank  Score       Time    Rank  Score
+ 10   10:47:22  28185      0   13:10:08   17719      0
   9   10:44:32  35893      0   10:56:10   35092      0
   8   10:19:26  42394      0   14:24:27   36399      0
   7   10:56:48  37950      0   12:40:26   34900      0

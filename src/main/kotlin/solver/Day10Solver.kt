@@ -6,26 +6,13 @@ import Day
 @Day(2023, 10)
 class Day10Solver : BaseSolver(), ISolver {
     companion object {
-        fun getNextPipe(pipeList: List<Pipe>, direction: Direction, position: Pair<Int, Int>): Pipe? {
+        fun getNextPipe(direction: Direction, position: Pair<Int, Int>): Pair<Int, Int> {
             return when (direction) {
-                Direction.Up -> pipeList.firstOrNull { it.position.first == position.first && it.position.second == position.second - 1 }
-                Direction.Down -> pipeList.firstOrNull { it.position.first == position.first && it.position.second == position.second + 1 }
-                Direction.Left -> pipeList.firstOrNull { it.position.first == position.first - 1 && it.position.second == position.second }
-                Direction.Right -> pipeList.firstOrNull { it.position.first == position.first + 1 && it.position.second == position.second }
+                Direction.Up -> Pair(position.first, position.second - 1)
+                Direction.Down -> Pair(position.first, position.second + 1)
+                Direction.Left -> Pair(position.first - 1, position.second)
+                Direction.Right -> Pair(position.first + 1, position.second)
             }
-        }
-
-        fun trapezoidArea(vertices: List<Pair<Int, Int>>): Int {
-            var sum = 0
-            for (i in 0..vertices.lastIndex) {
-                sum += if (i == vertices.lastIndex) {
-                    (vertices[i].first * vertices[0].second) - (vertices[0].first * vertices[i].second)
-                } else {
-                    (vertices[i].first * vertices[i + 1].second) - (vertices[i + 1].first * vertices[i].second)
-                }
-            }
-
-            return if (sum < 0) sum / -2 else sum / 2
         }
     }
 
@@ -46,44 +33,45 @@ class Day10Solver : BaseSolver(), ISolver {
         Right
     }
 
-
-    data class Pipe(val type: PipeType, val position: Pair<Int, Int>)
-
     override fun solve(cookie: String?): Pair<String, String?> {
-        val pipeMap = mutableListOf<Pipe>()
 
         val lines = getLines(cookie)
 
-        for (line in 0..lines.lastIndex) {
-            for (char in 0..lines[line].lastIndex) {
-                val type = PipeType.entries.firstOrNull { it.char == lines[line][char] }
-
-                if (type != null) {
-                    pipeMap.add(Pipe(type, Pair(char, line)))
+        var start = Pair(0, 0)
+        val pipeMap = lines.mapIndexed { y, line ->
+            line.mapIndexed { x, char ->
+                val type = PipeType.entries.firstOrNull { it.char == char }
+                if (type == PipeType.Start) {
+                    start = Pair(x, y)
                 }
+                type
             }
         }
 
-        val start = pipeMap.first { it.type == PipeType.Start }
         var part1 = 0
-        var path: MutableList<Pipe> = mutableListOf()
+        var part2 = 0
+        var vertices: MutableList<Pair<Int, Int>> = mutableListOf()
 
-        for (dir in listOf(Direction.Up, Direction.Down, Direction.Left, Direction.Right)) {
+        for (dir in listOf(Direction.Up, Direction.Right, Direction.Down, Direction.Left)) {
             var direction = dir
             var distance = 0
-            var pos = start.position
-            path = mutableListOf()
+            var pos = start
+            var area = 0
+            var lastVertice: Pair<Int, Int> = start
+
+            vertices = mutableListOf()
 
             while (true) {
-                val n = getNextPipe(pipeMap, direction, pos)
+                val n = getNextPipe(direction, pos)
 
-                if (n == null) {
-                    distance = 0
-                    break
-                }
-
-                val nextDirection = when (n.type) {
-                    PipeType.Start -> break
+                val nextDirection = when (pipeMap[n.second][n.first]) {
+                    PipeType.Start -> {
+                        if (dir != direction) {
+                            vertices.add(n)
+                        }
+                        area += lastVertice.first * n.second - n.first * lastVertice.second
+                        break
+                    }
 
                     PipeType.Vertical -> when (direction) {
                         Direction.Up -> Direction.Up
@@ -97,29 +85,51 @@ class Day10Solver : BaseSolver(), ISolver {
                         else -> null
                     }
 
-                    PipeType.SquareDownRight -> when (direction) {
-                        Direction.Down -> Direction.Right
-                        Direction.Left -> Direction.Up
-                        else -> null
+                    PipeType.SquareDownRight -> {
+                        vertices.add(n)
+                        area += lastVertice.first * n.second - n.first * lastVertice.second
+                        lastVertice = n
+                        when (direction) {
+                            Direction.Down -> Direction.Right
+                            Direction.Left -> Direction.Up
+                            else -> null
+                        }
                     }
 
-                    PipeType.SquareDownLeft -> when (direction) {
-                        Direction.Down -> Direction.Left
-                        Direction.Right -> Direction.Up
-                        else -> null
+                    PipeType.SquareDownLeft -> {
+                        vertices.add(n)
+                        area += lastVertice.first * n.second - n.first * lastVertice.second
+                        lastVertice = n
+                        when (direction) {
+                            Direction.Down -> Direction.Left
+                            Direction.Right -> Direction.Up
+                            else -> null
+                        }
                     }
 
-                    PipeType.SquareUpLeft -> when (direction) {
-                        Direction.Up -> Direction.Left
-                        Direction.Right -> Direction.Down
-                        else -> null
+                    PipeType.SquareUpLeft -> {
+                        vertices.add(n)
+                        area += lastVertice.first * n.second - n.first * lastVertice.second
+                        lastVertice = n
+                        when (direction) {
+                            Direction.Up -> Direction.Left
+                            Direction.Right -> Direction.Down
+                            else -> null
+                        }
                     }
 
-                    PipeType.SquareUpRight -> when (direction) {
-                        Direction.Up -> Direction.Right
-                        Direction.Left -> Direction.Down
-                        else -> null
+                    PipeType.SquareUpRight -> {
+                        vertices.add(n)
+                        area += lastVertice.first * n.second - n.first * lastVertice.second
+                        lastVertice = n
+                        when (direction) {
+                            Direction.Up -> Direction.Right
+                            Direction.Left -> Direction.Down
+                            else -> null
+                        }
                     }
+
+                    else -> null
                 }
 
                 if (nextDirection == null) {
@@ -128,26 +138,21 @@ class Day10Solver : BaseSolver(), ISolver {
                 }
 
                 distance++
-                path.add(n)
-                pos = n.position
+                pos = n
                 direction = nextDirection
             }
 
             if (distance > 0) {
                 part1 = (distance + 1) / 2
+                part2 = if (area < 0) {
+                    area / -2 - (part1 - 1)
+                } else {
+                    area / 2 - (part1 - 1)
+                }
                 break
             }
         }
 
-        val isStartAVertice = path.first().type != path.last().type
-
-        val vertices = path.filter { it.type != PipeType.Horizontal && it.type != PipeType.Vertical }.toMutableList()
-        if (isStartAVertice) {
-            vertices.add(start)
-        }
-
-        val area = trapezoidArea(vertices.map { it.position })
-        val part2 = area - (part1 - 1)
         return Pair(part1.toString(), part2.toString())
     }
 }
