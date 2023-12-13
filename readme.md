@@ -33,16 +33,18 @@ AoC. (Example: `./inputs/2023/1.txt`)
 
 ```
 Day 1: Part 1: (56108) | Part 2 (55652) | Solved in 25 ms
-Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 52 ms
-Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 101 ms
-Day 4: Part 1: (26218) | Part 2 (9997537) | Solved in 46 ms
-Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 98 ms
-Day 6: Part 1: (440000) | Part 2 (26187338) | Solved in 1 ms
-Day 7: Part 1: (251121738) | Part 2 (251421071) | Solved in 85 ms
-Day 8: Part 1: (14257) | Part 2 (16187743689077) | Solved in 46 ms
-Day 9: Part 1: (1861775706) | Part 2 (1082) | Solved in 21 ms
-Day 10: Part 1: (6903) | Part 2 (265) | Solved in 26 ms
-Day 11: Part 1: (9599070) | Part 2 (842645913794) | Solved in 25 ms
+Day 2: Part 1: (1931) | Part 2 (83105) | Solved in 5 ms
+Day 3: Part 1: (544664) | Part 2 (84495585) | Solved in 65 ms
+Day 4: Part 1: (26218) | Part 2 (9997537) | Solved in 9 ms
+Day 5: Part 1: (309796150) | Part 2 (50716416) | Solved in 22 ms
+Day 6: Part 1: (440000) | Part 2 (26187338) | Solved in 0 ms
+Day 7: Part 1: (251121738) | Part 2 (251421071) | Solved in 22 ms
+Day 8: Part 1: (14257) | Part 2 (16187743689077) | Solved in 29 ms
+Day 9: Part 1: (1861775706) | Part 2 (1082) | Solved in 5 ms
+Day 10: Part 1: (6903) | Part 2 (265) | Solved in 19 ms
+Day 11: Part 1: (9599070) | Part 2 (842645913794) | Solved in 66 ms
+Day 12: Part 1: (7506) | Part 2 (548241300348335) | Solved in 479 ms
+Day 13: Part 1: (33047) | Part 2 (28806) | Solved in 10 ms
 ```
 
   </p>

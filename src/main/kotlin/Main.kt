@@ -4,6 +4,7 @@ import com.natpryce.konfig.stringType
 import solver.Day10Solver
 import solver.Day11Solver
 import solver.Day12Solver
+import solver.Day13Solver
 import solver.Day1Solver
 import solver.Day2Solver
 import solver.Day3Solver
@@ -32,7 +33,8 @@ fun main() {
         9 to Day9Solver(),
         10 to Day10Solver(),
         11 to Day11Solver(),
-        12 to Day12Solver()
+        12 to Day12Solver(),
+        13 to Day13Solver()
     )
 
     val daysAvailable = solverMap.keys.joinToString(", ")
