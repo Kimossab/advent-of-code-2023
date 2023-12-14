@@ -50,31 +50,6 @@ Day 13: Part 1: (33047) | Part 2 (28806) | Solved in 10 ms
   </p>
 </details>
 
-<details>
-  <summary>My personal stats</summary>
-  <p>
-```
-      --------Part 1--------   --------Part 2---------
-Day       Time   Rank  Score       Time    Rank  Score
- 11   06:59:18  21598      0   07:31:53   20183      0
- 10   10:47:22  28185      0   13:10:08   17719      0
-  9   10:44:32  35893      0   10:56:10   35092      0
-  8   10:19:26  42394      0   14:24:27   36399      0
-  7   10:56:48  37950      0   12:40:26   34900      0
-  6   10:01:39  46013      0   10:11:14   44800      0
-  5   08:59:52  37254      0   10:13:19   19863      0
-  4   06:29:57  44674      0   07:21:32   36981      0
-  3   09:47:32  44525      0   09:55:36   35569      0
-  2   11:27:54  65859      0   11:35:43   61958      0
-  1   09:48:11  77728      0       >24h  119217      0
-```
-
-git remote add origin git@github.com:Kimossab/advent-of-code-2023.git
-git branch -M main
-git push -u origin main
-  </p>
-</details>
-
 ###### Disclaimer: I'm only writing this so the code page is not completely empty, this makes it more pleasing even if it's completely useless otherwise.
 
 ~~not like anyone is reading this anyway, but if you are have a nice day~~
