@@ -17,6 +17,7 @@ import solver.Day8Solver
 import solver.Day9Solver
 import solver.ISolver
 import kotlin.system.measureTimeMillis
+import solver.Day15Solver
 
 val aoc_cookie = Key("cookie", stringType)
 val config = ConfigurationProperties.fromResource("application.properties")
@@ -36,7 +37,8 @@ fun main() {
         11 to Day11Solver(),
         12 to Day12Solver(),
         13 to Day13Solver(),
-        14 to Day14Solver()
+        14 to Day14Solver(),
+        15 to Day15Solver()
     )
 
     val daysAvailable = solverMap.keys.joinToString(", ")
