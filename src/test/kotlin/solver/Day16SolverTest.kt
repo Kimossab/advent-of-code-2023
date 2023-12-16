@@ -21,9 +21,9 @@ class Day16SolverTest {
     val solver = spyk<Day16Solver>()
 
     @Test
-    fun `should return 46 for the default input`() {
+    fun `should return 46 and 51 for the default input`() {
         every { solver.getInput(any()) } returns testInput
 
-        assertEquals(Pair("46", null), solver.solve(""))
+        assertEquals(Pair("46", "51"), solver.solve(""))
     }
 }
