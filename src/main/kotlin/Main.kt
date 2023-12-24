@@ -10,6 +10,7 @@ import solver.Day15Solver
 import solver.Day16Solver
 import solver.Day17Solver
 import solver.Day18Solver
+import solver.Day19Solver
 import solver.Day1Solver
 import solver.Day2Solver
 import solver.Day3Solver
@@ -44,7 +45,8 @@ fun main() {
         15 to Day15Solver(),
         16 to Day16Solver(),
         17 to Day17Solver(),
-        18 to Day18Solver()
+        18 to Day18Solver(),
+        19 to Day19Solver()
     )
 
     val daysAvailable = solverMap.keys.joinToString(", ")
